@@ -1,0 +1,18 @@
+nav{
+    background-color: #d3fa84;
+}
+
+a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+.nav-icon{
+    margin-right: 30px;
+}
+
+nav li{
+    color:black;
+    padding: 0 20px 0 20px;
+}
+
