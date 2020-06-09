@@ -1,8 +1,25 @@
-<div style="padding: 50px;">
-<ag-grid-angular 
-    [rowData]="prompts" 
-    [columnDefs]="colDefs" 
-    class="ag-theme-balham" 
-    style="width: 850px;height:350px">
-</ag-grid-angular>
+<div class="col">
+<div class="row">
+    <div class="filters row" style="margin-right: auto; margin-left: auto;">
+        <button class="btn trending">Trending</button>
+        <button class="btn popular">Most Popular</button>
+        <button class="btn recent">Recent</button>
+        <input 
+            type="text" 
+            class="form-control search-bar" 
+            placeholder="Search..." 
+            (keyup)="search($event)" 
+            [(ngModel)]="searchPhrase"/>
+    </div>
+</div>
+<div class="row">
+    <ag-grid-angular 
+                [rowData]="prompts" 
+                [columnDefs]="colDefs" 
+                (gridReady)="onGridReady($event)"
+                class="ag-theme-balham"
+                
+                >
+    </ag-grid-angular>
+</div>
 </div>

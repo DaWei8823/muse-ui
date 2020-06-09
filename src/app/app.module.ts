@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { PromptsComponent } from './prompts/prompts.component';
+import { FormsModule } from "@angular/forms"; 
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { PromptsComponent } from './prompts/prompts.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     AgGridModule.withComponents([]),
     RouterModule.forRoot([
       {

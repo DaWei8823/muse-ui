@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PromptOverview } from './models';
-import { ColDef } from 'ag-grid-community'
-
+import { PromptOverview } from '../models';
+import { ColDef, GridApi, GridReadyEvent, ColumnApi } from 'ag-grid-community'
 
 @Component({
   selector: 'prompts',
@@ -10,24 +9,36 @@ import { ColDef } from 'ag-grid-community'
 })
 export class PromptsComponent implements OnInit {
 
-  colDefs = 
+  colDefs:ColDef[] = 
   [
-    { headerName: '#', field: 'id',},
+    { headerName: '#', field: 'id' },
     { headerName: 'Title', field: 'title'},
-    { headerName: "Date", field: "dateAdded" },
+    { headerName: 'Created By', field: "createdBy", filter:true },
+    { headerName: "Date", field: "dateAdded", valueFormatter: param => param.value.toLocaleDateString() },
     { headerName: 'Submissions', field: 'submissions'},
     { headerName: 'Tags', field: 'tags' }
   ]
-  private prompts:[PromptOverview]
+  private prompts:PromptOverview[]
+  private gridApi:GridApi
+  private columnApi:ColumnApi
+  private searchPhrase:string
 
   constructor() { }
 
+  search(event:KeyboardEvent){
+    console.log(this.searchPhrase)
+    this.gridApi.setQuickFilter(this.searchPhrase)
+  }
 
-  
+  onGridReady(params:GridReadyEvent){
+    this.gridApi = params.api
+    this.columnApi = params.columnApi
+    this.columnApi.autoSizeAllColumns()
+  }
 
   ngOnInit(): void {
     this.prompts = [
-      { id : 1, title : "adsfasdf", submissions : 4, tags : "asdf, asdf, asdf, asdf", dateAdded: new Date() }
+      { id : 1, title : "adsfasdf", createdBy: "DaWei888", submissions : 4, tags : "asdf, asdf, asdf, asdf", dateAdded: new Date() }
     ]
   }
 

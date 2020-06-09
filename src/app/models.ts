@@ -1,7 +1,8 @@
 export interface PromptOverview {
     id:number
     title:string
-    submissions:number
+    submissions:number,
+    createdBy:string
     tags:string
     dateAdded:Date
 }
