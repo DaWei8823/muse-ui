@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { PromptOverview } from '../models';
 import { ColDef, GridApi, GridReadyEvent, ColumnApi, ICellRendererParams } from 'ag-grid-community'
-import { ImplicitReceiver } from '@angular/compiler';
+import {MatDialog} from '@angular/material/dialog';
+import { CreatePromptDialogComponent } from '../create-prompt-dialog/create-prompt-dialog.component';
 
 @Component({
   selector: 'prompts',
@@ -17,7 +18,13 @@ export class PromptsComponent implements OnInit {
   private columnApi:ColumnApi
   private searchPhrase:string
 
-  constructor() { }
+  constructor(private dialog:MatDialog) { }
+
+  openCreatePromptDialog(){
+    const dialogRef = this.dialog.open(CreatePromptDialogComponent)
+
+    dialogRef.afterClosed().subscribe(result => console.log(result))
+  }
 
   search(event:KeyboardEvent){
     console.log(this.searchPhrase)

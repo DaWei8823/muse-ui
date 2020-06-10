@@ -8,16 +8,21 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { PromptsComponent } from './prompts/prompts.component';
 import { FormsModule } from "@angular/forms";
-import { CreateComponent } from './create/create.component'; 
+import { CreateComponent } from './create/create.component';
+import { CreatePromptDialogComponent } from './create-prompt-dialog/create-prompt-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     PromptsComponent,
-    CreateComponent
+    CreateComponent,
+    CreatePromptDialogComponent
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     AppRoutingModule,
     FormsModule,
     AgGridModule.withComponents([]),
@@ -31,9 +36,11 @@ import { CreateComponent } from './create/create.component';
       {
         path: 'create', component: CreateComponent
       }
-    ])
+    ]),
+    BrowserAnimationsModule    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreatePromptDialogComponent]
 })
 export class AppModule { }
