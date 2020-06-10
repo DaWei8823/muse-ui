@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { PromptsComponent } from './prompts/prompts.component';
-import { FormsModule } from "@angular/forms"; 
+import { FormsModule } from "@angular/forms";
+import { CreateComponent } from './create/create.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PromptsComponent
+    PromptsComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,9 @@ import { FormsModule } from "@angular/forms";
       },
       {
         path: 'prompts', component: PromptsComponent
+      },
+      {
+        path: 'create', component: CreateComponent
       }
     ])
   ],
