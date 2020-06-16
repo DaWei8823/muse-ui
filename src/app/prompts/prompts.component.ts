@@ -11,8 +11,6 @@ import { CreatePromptDialogComponent } from '../create-prompt-dialog/create-prom
 })
 export class PromptsComponent implements OnInit {
 
-
-
   private prompts:PromptOverview[]
   private gridApi:GridApi
   private columnApi:ColumnApi
@@ -22,12 +20,10 @@ export class PromptsComponent implements OnInit {
 
   openCreatePromptDialog(){
     const dialogRef = this.dialog.open(CreatePromptDialogComponent)
-
     dialogRef.afterClosed().subscribe(result => console.log(result))
   }
 
   search(event:KeyboardEvent){
-    console.log(this.searchPhrase)
     this.gridApi.setQuickFilter(this.searchPhrase)
   }
 
@@ -39,7 +35,7 @@ export class PromptsComponent implements OnInit {
 
   ngOnInit(): void {
     this.prompts = [
-      { id : 1, title : "Lion king in different ecosystem", createdBy: "DaWei888", submissions : 4, tags : "asdf, asdf, asdf, asdf", dateAdded: new Date() }
+      { promptId : 1, title : "Lion king in different ecosystem", createdBy: "DaWei888", submissions : 4, tags : "asdf, asdf, asdf, asdf", dateAdded: new Date() }
     ]
   }
 
@@ -56,17 +52,21 @@ export class PromptsComponent implements OnInit {
     return a
   }
 
+  titleCellRenderer = function(params:ICellRendererParams){
+    let a = document.createElement('a');
+    a.href = `/view/${params.data.promptId}`
+    a.text = params.value
+    return a
+  }
+
   colDefs:ColDef[] = 
   [
-    { headerName: '', field: 'id', cellRenderer: this.viewPromptCellRenderer, width: 100 },
-    { headerName: 'Title', field: 'title', width: 550},
-    { headerName: 'Created By', field: "createdBy", filter:true },
-    { headerName: "Date", field: "dateAdded", valueFormatter: param => param.value.toLocaleDateString() },
-    { headerName: 'Submissions', field: 'submissions'},
+    { headerName: 'Prompt', field: 'title', width: 550, cellRenderer: this.titleCellRenderer },
+    { headerName: 'Created By', field: "createdBy", filter: true },
+    { headerName: "Date", field: "dateAdded", valueFormatter: param => param.value.toLocaleDateString(), cellClass: 'date-cell' },
+    { headerName: 'Submissions', field: 'submissions', cellClass: 'num-cell'},
     { headerName: 'Tags', field: 'tags', width:400 }
   ]
-
-
   
   // <img class="nav-icon" src="favicon.ico" alt="" height="35px">
 }

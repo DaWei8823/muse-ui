@@ -1,5 +1,5 @@
 export interface PromptOverview {
-    id:number
+    promptId:number
     title:string
     submissions:number,
     createdBy:string

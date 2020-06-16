@@ -12,13 +12,16 @@ import { CreateComponent } from './create/create.component';
 import { CreatePromptDialogComponent } from './create-prompt-dialog/create-prompt-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     PromptsComponent,
     CreateComponent,
-    CreatePromptDialogComponent
+    CreatePromptDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -31,13 +34,17 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
         path: '', component: PromptsComponent
       },
       {
+        path:'login', component: LoginComponent
+      },
+      {
         path: 'prompts', component: PromptsComponent
       },
       {
         path: 'create', component: CreateComponent
       }
     ]),
-    BrowserAnimationsModule    
+    BrowserAnimationsModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
