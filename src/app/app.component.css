@@ -17,6 +17,11 @@ nav li{
 }
 
 .profile{
-    background-color: white;
+    display: flex;
+    justify-content: right;
+    height: 100%;
 }
 
+.navbar-nav li {
+    margin: auto;
+}

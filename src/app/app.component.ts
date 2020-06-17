@@ -14,35 +14,28 @@ import { User } from './models';
 export class AppComponent implements OnInit {
 
   title = 'Muse';
-  user:User = {
-    userId: 1,
-    username: 'DaWei888',
-    pictureUrl: 'https://lh5.googleusercontent.com/-ZgjsYm9gkO4/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnIwImwLk2_155Ibv-dXJopriNrlw/photo.jpg',
-    email: null
-  };
+  user:User;
 
-  constructor(private readonly authService:AuthService, private route: ActivatedRoute, private router: Router,private dialog:MatDialog){}
+  constructor(private readonly authService:AuthService, private route: ActivatedRoute, private router: Router, private dialog:MatDialog){}
+
 
   ngOnInit(): void {
-       
+            
     this.route.queryParamMap
-    .subscribe(params =>
-    { 
-      let jwt = params.get('jwt');
+      .subscribe(params =>
+      { 
+        let jwt = params.get('jwt');
 
-      if(jwt){
-        console.log('navigating');
-        localStorage.setItem("jwt", jwt);
-        let jwt2  = localStorage.getItem("jwt");
-        console.log(`jwt just set ${jwt2}`);
-        this.router.navigateByUrl('prompts');
-      }
-      else{
-        this.checkAuth();
-      }
-      console.log('done');
-  }, error => console.log(error), () => console.log("complete"));
-
+        if(jwt){
+          console.log('navigating');
+          localStorage.setItem("jwt", jwt);
+          let jwt2  = localStorage.getItem("jwt");
+          console.log(`jwt just set ${jwt2}`);
+          this.router.navigateByUrl('prompts');
+        }
+      });
+  
+  this.authService.getUser().subscribe(user => this.user = user)
 }
 
   // handleParamMap(params:ParamMap){

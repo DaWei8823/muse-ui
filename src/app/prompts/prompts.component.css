@@ -12,6 +12,7 @@
 .trending{
     background-color:#FF9191 ;
     font-weight: bold;
+    margin-left: 0px;
 }
 
 .popular{
@@ -48,4 +49,3 @@ ag-grid-angular{
     cursor: pointer;
     margin-top: 10px;
 }
-

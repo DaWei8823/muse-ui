@@ -15,6 +15,7 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './jwt.interceptor';
+import { UnauthorizedResponseInterceptor } from './unauthorized-resp.interceptor';
 
 
 @NgModule({
@@ -49,6 +50,11 @@ import { JwtInterceptor } from './jwt.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedResponseInterceptor,
       multi: true
     }
   ],

@@ -1,21 +1,34 @@
 
 <div>
   <nav class="navbar navbar-expand-lg navbar-light">
-    <a href="/">
-      <img class="nav-icon" src="favicon.ico" alt="" height="35px">
-    </a>
-    <ul class="nav navbar-nav">
-      <li>
-        <a href="prompts">Prompts</a>
-      </li>
-      <li>
-        <a href="submissions">Submissions</a>
-      </li>
-    </ul>
-    <div class="profile navbar-right">
-        <img [src]="user.pictureUrl" height="20px">
-        {{user.username}}
-    </div>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/">
+              <img class="nav-icon" src="favicon.ico" alt="" height="35px">
+            </a>
+          </li>
+          <li>
+            <a href="prompts">Prompts</a>
+          </li>
+          <li>
+            <a href="submissions">Submissions</a>
+          </li>
+        </ul>
+      </div>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <div *ngIf="user">
+          <a href="profile">
+            <img [src]="user.pictureUrl" height="20px">
+            {{user.username}}
+          </a>
+        </div>
+        </li>
+      </ul>
+  </div>
   </nav>
   <router-outlet>
 
