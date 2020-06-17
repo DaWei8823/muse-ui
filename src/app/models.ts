@@ -6,3 +6,10 @@ export interface PromptOverview {
     tags:string
     dateAdded:Date
 }
+
+export interface User {
+    userId:number
+    username:string;
+    email:string;    
+    pictureUrl?:string;
+}

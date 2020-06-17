@@ -5,7 +5,7 @@ import { AgGridModule } from 'ag-grid-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, provideRoutes } from '@angular/router';
 import { PromptsComponent } from './prompts/prompts.component';
 import { FormsModule } from "@angular/forms";
 import { CreateComponent } from './create/create.component';
@@ -13,7 +13,9 @@ import { CreatePromptDialogComponent } from './create-prompt-dialog/create-promp
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './jwt.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -34,9 +36,6 @@ import { HttpClientModule } from '@angular/common/http';
         path: '', component: PromptsComponent
       },
       {
-        path:'login', component: LoginComponent
-      },
-      {
         path: 'prompts', component: PromptsComponent
       },
       {
@@ -46,7 +45,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule, 
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [CreatePromptDialogComponent]
 })
