@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { User } from './models';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,12 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 export class AppComponent implements OnInit {
 
   title = 'Muse';
-  
+  user:User = {
+    userId: 1,
+    username: 'DaWei888',
+    pictureUrl: 'https://lh5.googleusercontent.com/-ZgjsYm9gkO4/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnIwImwLk2_155Ibv-dXJopriNrlw/photo.jpg',
+    email: null
+  };
 
   constructor(private readonly authService:AuthService, private route: ActivatedRoute, private router: Router,private dialog:MatDialog){}
 

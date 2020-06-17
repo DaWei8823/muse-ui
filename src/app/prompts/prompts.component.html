@@ -1,16 +1,20 @@
-<div class="col">
+<div class="col-md">
 <div class="row">
     <div class="filters row" style="margin-right: auto; margin-left: auto;">
-        <button class="btn trending">Trending</button>
-        <button class="btn popular">Most Popular</button>
-        <button class="btn recent">Recent</button>
-        <input 
-            type="text" 
-            class="form-control search-bar" 
-            placeholder="Search..." 
-            (keyup)="search($event)" 
-            [(ngModel)]="searchPhrase"/>
-            <img src="../assets/create.png" height="20px" class="create-prompt" (click)="openCreatePromptDialog()">
+        <div class="col-lg" >
+            <button class="btn trending">Trending</button>
+            <button class="btn popular">Most Popular</button>
+            <button class="btn recent">Recent</button>
+            <input 
+                type="text" 
+                class="form-control search-bar" 
+                placeholder="Search..." 
+                (keyup)="search($event)" 
+                [(ngModel)]="searchPhrase"/>
+        </div>
+        <div>
+            <img src="../assets/create.png" height="30px" class="create-prompt" (click)="openCreatePromptDialog()" alt="Add Prompt">
+         </div>     
     </div>
 </div>
 <div class="row">

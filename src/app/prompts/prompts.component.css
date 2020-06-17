@@ -23,7 +23,9 @@
 }
 
 .search-bar{
-    width: 240px;
+    width: 200px;
+    display: inline-block;
+    vertical-align: bottom;
 }
 
 ag-grid-angular{
@@ -44,4 +46,6 @@ ag-grid-angular{
 
 .create-prompt{
     cursor: pointer;
+    margin-top: 10px;
 }
+

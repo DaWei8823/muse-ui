@@ -11,10 +11,11 @@
       <li>
         <a href="submissions">Submissions</a>
       </li>
-      <li>
-        <a href="profile">Profile</a>
-      </li>
     </ul>
+    <div class="profile navbar-right">
+        <img [src]="user.pictureUrl" height="20px">
+        {{user.username}}
+    </div>
   </nav>
   <router-outlet>
 
